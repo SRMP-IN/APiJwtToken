@@ -1,7 +1,15 @@
-﻿1.Add Pacjage
+﻿1.Add Package
 
 dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer 
 dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore 
 dotnet add package Microsoft.AspNetCore.Identity.UI 
 
 2. Add Json JWTConfig Json and CS
+
+3. Add Package  for connect with DB
+
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFrameworkCore.Design
+Package Microsoft.EntityFrameworkCore.Tools
+  
+Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=DBAPiJwt;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DataBase/DBContx -force

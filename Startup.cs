@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,6 +31,10 @@ namespace APiJwtToken
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //DB
+
+            services.AddDbContext<DataBase.DBContx.DBAPiJwtContext>(option => option.UseSqlServer(Configuration.GetConnectionString("ConStr")));
+
             // JWt Config ------------------------------------------------------------
             var key = Encoding.ASCII.GetBytes(Configuration["JwtConfig:Secret"]);// JWt Config
             services.Configure<Configuration.JwtConfig>(Configuration.GetSection("JwtConfig"));// JWt Config
@@ -52,8 +57,8 @@ namespace APiJwtToken
                 };
             });//Jwt Config
 
-            // services.AddDefaultIdentity<IdentityUser>(option => option.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApiDbContext>();
+            services.AddDefaultIdentity<IdentityUser>(option => option.SignIn.RequireConfirmedAccount = true)
+            .AddEntityFrameworkStores<DataBase.DBContx.DBAPiJwtContext>();
             // JWt Config ------------------------------------------------------------
 
             services.AddControllers();
