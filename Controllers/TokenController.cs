@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using APiJwtToken.Configuration;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +13,23 @@ namespace APiJwtToken.Controllers
     [ApiController]
     public class TokenController : ControllerBase
     {
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly Configuration.JwtConfig jwtConfig;
+
+        public TokenController(UserManager<IdentityUser> _userManager, IOptionsMonitor<Configuration.JwtConfig> _jwtConfig)
         {
-            return new string[] { "value2ss", "value2" };
+            jwtConfig = _jwtConfig.CurrentValue;
+            userManager = _userManager;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            string EmailId = "Test@test.com";
+            string Id = "231093212";
+            var IdentityUser = new IdentityUser() { Email = EmailId, UserName = EmailId, Id = Id };
+
+            return Ok(IdentityUser);
         }
     }
 }

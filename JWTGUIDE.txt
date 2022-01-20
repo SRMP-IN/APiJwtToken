@@ -4,3 +4,4 @@ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore 
 dotnet add package Microsoft.AspNetCore.Identity.UI 
 
+2. Add Json JWTConfig Json and CS
