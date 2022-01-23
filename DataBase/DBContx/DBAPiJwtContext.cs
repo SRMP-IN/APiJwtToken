@@ -26,6 +26,8 @@ namespace APiJwtToken.DataBase.DBContx
         //public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         //public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
 
+        public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

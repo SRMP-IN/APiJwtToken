@@ -13,3 +13,5 @@ Microsoft.EntityFrameworkCore.Design
 Package Microsoft.EntityFrameworkCore.Tools
   
 Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=DBAPiJwt;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DataBase/DBContx -force
+
+4. Refersh Token add 
